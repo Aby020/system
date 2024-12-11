@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        marquee {
+            margin-top: 1em;
+            font-size: larger;
+            margin-left: 10%;
+            margin-right: 10%;
+            color: red;
+        }
+
+        b {
+            background-color: yellow;
+        }
+
+        table {
+            margin-top: 1em;
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2em;
+            background-color: lightgray;
+        }
+
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        input, textarea {
+            border: 1px solid gray;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10"><b>WELCOME TO FRESHERS WORLD !!!</b></marquee>
+    <form id="registrationForm">
+        <table>
+            <tr>
+                <th colspan="3">REGISTRATION FORM</th>
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td colspan="2"><input type="text" id="name" required></td>
+            </tr>
+            <tr>
+                <td>AGE</td>
+                <td colspan="2">
+                    <select id="age" required>
+                        <option value="">SELECT</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">ADDRESS</td>
+                <td>Home</td>
+                <td>Office</td>
+            </tr>
+            <tr>
+                <td><textarea id="homeAddress" rows="3" placeholder="Enter your home address" required></textarea></td>
+                <td><textarea id="officeAddress" rows="3" placeholder="Enter your office address" required></textarea></td>
+            </tr>
+            <tr>
+                <td>PASSWORD</td>
+                <td colspan="2"><input type="password" id="password" required></td>
+            </tr>
+            <tr>
+                <td>RETYPE PASSWORD</td>
+                <td colspan="2"><input type="password" id="retypePassword" required></td>
+            </tr>
+            <tr>
+                <td rowspan="4">SELECT YOUR SECURITY QUESTION</td>
+                <td colspan="2"><input type="radio" name="security" value="pet_name" required>What is your pet name?</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="radio" name="security" value="best_friend">Who is your best friend?</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="radio" name="security" value="favorite_color">What is your favourite color?</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="radio" name="security" value="favorite_teacher">Who is your favourite teacher?</td>
+            </tr>
+            <tr>
+                <td>ANSWER OF SECURITY QUESTION</td>
+                <td colspan="2"><input type="text" id="securityAnswer" required></td>
+            </tr>
+            <tr>
+                <td>EMAIL ID</td>
+                <td colspan="2"><input type="email" id="email" required></td>
+            </tr>
+            <tr>
+                <td>LANGUAGES KNOWN</td>
+                <td colspan="2">
+                    <input type="checkbox">MALAYALAM 
+                    <input type="checkbox">ENGLISH 
+                    <input type="checkbox">HINDI
+                </td>
+            </tr>
+            <tr>
+                <td>UPLOAD CV</td>
+                <td colspan="2"><input type="file" id="cvUpload"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><input type="reset" style="background-color: red; color: white; padding: 6px 12px; border: 1px solid transparent;"></td>
+                <td colspan="2" style="text-align: center;"><input type="submit" style="background-color: green; color: white; padding: 6px 12px; border: 1px solid transparent;"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const retypePassword = document.getElementById('retypePassword').value;
+            const email = document.getElementById('email').value;
+
+            // Check if passwords match
+            if (password !== retypePassword) {
+                alert('Passwords do not match!');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // Basic email format validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address!');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            alert('Registration successful!'); // Optional: Alert on successful submission
+        });
+    </script>
+</body>
+
+</html>
